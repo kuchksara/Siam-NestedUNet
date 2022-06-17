@@ -40,7 +40,7 @@ with torch.no_grad():
         cd_preds = cd_preds.data.cpu().numpy()
         cd_preds = cd_preds.squeeze() * 255
 
-        file_path = './output_img/' + str(index_img).zfill(5)
+        file_path = './output_img_test/' + str(index_img).zfill(5)
         cv2.imwrite(file_path + '.png', cd_preds)
 
         index_img += 1
