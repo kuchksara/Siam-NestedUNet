@@ -9,8 +9,8 @@ import os
 from tqdm import tqdm
 import cv2
 
-if not os.path.exists('./output_img'):
-    os.mkdir('./output_img')
+if not os.path.exists('./output_img_test'):
+    os.mkdir('./output_img_test')
 
 parser, metadata = get_parser_with_args()
 opt = parser.parse_args()
