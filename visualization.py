@@ -20,7 +20,12 @@ dev = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 test_loader = get_test_loaders(opt, batch_size=1)
 
 path = 'weights/snunet-32.pt'   # the path of the model
-model = torch.load(path)
+if dev == 'cpu':
+    print('dev is cpu')
+    model = torch.load(path, map_location=torch.device('cpu'))
+else:
+    model = torch.load(path)
+
 
 model.eval()
 index_img = 0
