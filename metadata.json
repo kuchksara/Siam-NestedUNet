@@ -3,13 +3,13 @@
   "augmentation": true,
   "num_gpus": 1,
   "num_workers": 8,
-  "num_channel": 3,
+  "num_channel": 4,
   "EF": false,
   "epochs": 100,
   "batch_size": 16,
   "learning_rate": 1e-3,
   "loss_function": "hybrid",
-  "dataset_dir": "/content/drive/MyDrive/change_detection/data/ChangeDetectionDataset/Model/custom/",
+  "dataset_dir": "/Users/apple/khedmat/cd/data/ChangeDetectionDataset/Model/custom/",
   "weight_dir": "./outputs/",
   "log_dir": "./log/"
 }
