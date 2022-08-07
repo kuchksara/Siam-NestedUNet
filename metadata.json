@@ -3,7 +3,7 @@
   "augmentation": true,
   "num_gpus": 1,
   "num_workers": 8,
-  "num_channel": 4,
+  "num_channel": 3,
   "EF": false,
   "epochs": 100,
   "batch_size": 16,
