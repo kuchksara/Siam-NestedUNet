@@ -39,7 +39,7 @@ with torch.no_grad():
         batch_img1 = batch_img1.float().to(dev)
         batch_img2 = batch_img2.float().to(dev)
         labels = labels.long().to(dev)
-
+        print(batch_img1.shape)
         cd_preds = model(batch_img1, batch_img2)
 
         cd_preds = cd_preds[-1]
