@@ -8,6 +8,7 @@ from utils.helpers import get_test_loaders, initialize_metrics
 import os
 from tqdm import tqdm
 import cv2
+import numpy as np
 
 if not os.path.exists('./output_img_test'):
     os.mkdir('./output_img_test')
@@ -45,6 +46,7 @@ with torch.no_grad():
         print(type(cd_preds))
         _, cd_preds = torch.max(cd_preds, 1)
         cd_preds = cd_preds.data.cpu().numpy()
+        np.save('./output_img_test/change{}.npy'.format(index_img), cd_preds)
         cd_preds = cd_preds.squeeze() * 255
 
         file_path = './output_img_test/' + str(index_img).zfill(5)
