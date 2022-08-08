@@ -42,6 +42,7 @@ with torch.no_grad():
         cd_preds = model(batch_img1, batch_img2)
 
         cd_preds = cd_preds[-1]
+        print(type(cd_preds))
         _, cd_preds = torch.max(cd_preds, 1)
         cd_preds = cd_preds.data.cpu().numpy()
         cd_preds = cd_preds.squeeze() * 255
