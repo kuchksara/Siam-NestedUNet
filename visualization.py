@@ -9,6 +9,7 @@ import os
 from tqdm import tqdm
 import cv2
 import numpy as np
+import time
 
 if not os.path.exists('./output_img_test'):
     os.mkdir('./output_img_test')
@@ -35,7 +36,7 @@ test_metrics = initialize_metrics()
 with torch.no_grad():
     tbar = tqdm(test_loader)
     for batch_img1, batch_img2, labels in tbar:
-
+        t1 = time.time()
         batch_img1 = batch_img1.float().to(dev)
         batch_img2 = batch_img2.float().to(dev)
         labels = labels.long().to(dev)
@@ -43,9 +44,11 @@ with torch.no_grad():
         cd_preds = model(batch_img1, batch_img2)
 
         cd_preds = cd_preds[-1]
-        print(type(cd_preds))
+#         print(type(cd_preds))
         _, cd_preds = torch.max(cd_preds, 1)
         cd_preds = cd_preds.data.cpu().numpy()
+        t2 = time.time()
+        print('change detection time is: {}'.format(t2 - t1))
         np.save('./output_img_test/change{}.npy'.format(index_img), cd_preds)
         cd_preds = cd_preds.squeeze() * 255
 
